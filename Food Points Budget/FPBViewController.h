@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FPBViewController : UIViewController
+@interface FPBViewController : UIViewController <UITextFieldDelegate>
 
 @end

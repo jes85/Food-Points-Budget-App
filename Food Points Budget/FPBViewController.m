@@ -9,12 +9,13 @@
 #import "FPBViewController.h"
 #import "FPBBudget.h"
 
-//static const NSUInteger days = 100;
+//add something to find out which semester they're in
 static const NSUInteger endMonth = 12;
 static const NSUInteger endDay = 14;
 static const NSUInteger endYear = 2014;
 
 @interface FPBViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *calculateButton;
 @property (weak, nonatomic) IBOutlet UITextField *totalFoodPointsTextField;
 @property (weak, nonatomic) IBOutlet UILabel *avgFoodPointsPerDayLabel;
@@ -28,6 +29,8 @@ static const NSUInteger endYear = 2014;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.totalFoodPointsTextField becomeFirstResponder];
+    self.totalFoodPointsTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,7 +38,23 @@ static const NSUInteger endYear = 2014;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self calculateAvgFoodPointsPerDay];
+    
+    return NO;
+}
 - (IBAction)calculateButtonPressed:(id)sender {
+    [self calculateAvgFoodPointsPerDay];
+  
+}
+
+- (void)calculateAvgFoodPointsPerDay
+{
+    if([self.totalFoodPointsTextField isFirstResponder]) [self.totalFoodPointsTextField resignFirstResponder]; //dismiss keyboard
+    
     NSNumber *num = (NSNumber *)self.totalFoodPointsTextField.text;
     float totalFoodPoints = [num floatValue];
     
@@ -49,14 +68,22 @@ static const NSUInteger endYear = 2014;
     NSDate *endDate = [calendar dateFromComponents:endDateComponents];
     
     
-    //FPBBudget *budget = [[FPBBudget alloc]initWithStartDate:[NSDate date] endDate:[NSDate dateWithTimeInterval:60*60*24*days sinceDate:[NSDate date]] foodPoints:2000];
-    
+    // Calculations
     FPBBudget *budget = [[FPBBudget alloc]initWithStartDate:[NSDate date] endDate:endDate foodPoints:totalFoodPoints];
     float avgFoodPointsPerDay = [budget mainCalculations];
+    
+    // Convert Number to Label
     NSString *avgFoodPointsText = [NSString stringWithFormat:@"%.2f", avgFoodPointsPerDay];
-    self.avgFoodPointsPerDayLabel.text = avgFoodPointsText;
+    NSString *dollarSign = @"$";
+    NSString *resultLabel = [dollarSign stringByAppendingString:avgFoodPointsText];
+    self.avgFoodPointsPerDayLabel.text = resultLabel;
 
 }
-
+-(void)calculateSemester
+{
+    
+}- (IBAction)backgroundTouched:(id)sender {
+    if([self.totalFoodPointsTextField isFirstResponder]) [self.totalFoodPointsTextField resignFirstResponder];
+}
 
 @end
