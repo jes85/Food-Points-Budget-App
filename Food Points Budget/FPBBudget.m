@@ -12,8 +12,8 @@
 //wedding: 3
 //fall break: 4
 //thanksgiving: 5
-static const NSUInteger numDaysNotInSchool = 9;
-static const NSUInteger jeremyNumDaysNotInSchool = 12;
+//static const NSUInteger numDaysNotInSchool = 9;
+//static const NSUInteger jeremyNumDaysNotInSchool = 12;
 
 
 @interface FPBBudget()
@@ -21,6 +21,7 @@ static const NSUInteger jeremyNumDaysNotInSchool = 12;
 @property (nonatomic) NSDate *startDate;
 @property (nonatomic) NSDate *endDate;
 @property (nonatomic) float totalFoodPoints;
+@property (nonatomic) NSInteger numDaysNotInSchool;
 
 @end
 
@@ -30,13 +31,14 @@ static const NSUInteger jeremyNumDaysNotInSchool = 12;
 
 
 
--(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate foodPoints:(float)foodPoints
+-(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate foodPoints:(float)foodPoints numDaysNotInSchool:(NSInteger)numDays
 {
     self = [super init];
     if(self){
         self.startDate = startDate;
         self.endDate = endDate;
         self.totalFoodPoints = foodPoints;
+        self.numDaysNotInSchool = numDays;
     }
     return self;
 }
@@ -47,6 +49,7 @@ static const NSUInteger jeremyNumDaysNotInSchool = 12;
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
+    // Change start date to be start of today (endDate is already start of that end day, so that's unnecessary)
     [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
                  interval:NULL forDate:self.startDate];
     [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
@@ -55,8 +58,13 @@ static const NSUInteger jeremyNumDaysNotInSchool = 12;
     NSDateComponents *difference = [calendar components:NSDayCalendarUnit
                                                fromDate:fromDate toDate:toDate options:0];
     
-    NSUInteger daysLeft = [difference day]  - numDaysNotInSchool;
-    //NSLog(@"Days Left: %ld",(unsigned long)daysLeft);
+    // use this if you don't want the calculation to include today
+    //NSDateComponents *difference2 = [calendar components:NSDayCalendarUnit
+                                             //  fromDate:self.startDate toDate:self.endDate options:0];
+    
+
+    #warning - if current date is after break, the break will still be counted (need to change)
+    NSUInteger daysLeft = [difference day]  - self.numDaysNotInSchool;
     
     return daysLeft;
 }
@@ -70,7 +78,6 @@ static const NSUInteger jeremyNumDaysNotInSchool = 12;
 {
     NSUInteger numDaysLeft = [self calculateDaysLeft];
     float avgFoodPointsPerDay = [self foodPointsPerDayForNumDaysLeft:numDaysLeft totalFoodPointsLeft:self.totalFoodPoints];
-    //NSLog(@"Avg food points per day: %f", avgFoodPointsPerDay);
     
     return avgFoodPointsPerDay;
 }

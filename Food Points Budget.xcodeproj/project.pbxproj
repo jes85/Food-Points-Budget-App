@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F5CE2D319E32E43007DC8AD /* FPBSemester.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5CE2D219E32E43007DC8AD /* FPBSemester.m */; };
 		3FBC8DEB19ACCB3A0033ECD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBC8DEA19ACCB3A0033ECD6 /* Foundation.framework */; };
 		3FBC8DED19ACCB3A0033ECD6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBC8DEC19ACCB3A0033ECD6 /* CoreGraphics.framework */; };
 		3FBC8DEF19ACCB3A0033ECD6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBC8DEE19ACCB3A0033ECD6 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F5CE2D119E32E43007DC8AD /* FPBSemester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPBSemester.h; sourceTree = "<group>"; };
+		3F5CE2D219E32E43007DC8AD /* FPBSemester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPBSemester.m; sourceTree = "<group>"; };
 		3FBC8DE719ACCB3A0033ECD6 /* Food Points Budget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Points Budget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBC8DEA19ACCB3A0033ECD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3FBC8DEC19ACCB3A0033ECD6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,6 +164,8 @@
 			children = (
 				3FBC8E1F19ACCB8A0033ECD6 /* FPBBudget.h */,
 				3FBC8E2019ACCB8A0033ECD6 /* FPBBudget.m */,
+				3F5CE2D119E32E43007DC8AD /* FPBSemester.h */,
+				3F5CE2D219E32E43007DC8AD /* FPBSemester.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			files = (
 				3FBC8DF719ACCB3A0033ECD6 /* main.m in Sources */,
 				3FBC8E2119ACCB8A0033ECD6 /* FPBBudget.m in Sources */,
+				3F5CE2D319E32E43007DC8AD /* FPBSemester.m in Sources */,
 				3FBC8E0119ACCB3A0033ECD6 /* FPBViewController.m in Sources */,
 				3FBC8DFB19ACCB3A0033ECD6 /* FPBAppDelegate.m in Sources */,
 			);
@@ -483,6 +489,7 @@
 				3FBC8E1B19ACCB3A0033ECD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3FBC8E1C19ACCB3A0033ECD6 /* Build configuration list for PBXNativeTarget "Food Points BudgetTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +498,7 @@
 				3FBC8E1E19ACCB3A0033ECD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

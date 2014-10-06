@@ -11,6 +11,6 @@
 @interface FPBBudget : NSObject
 
 
--(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate foodPoints:(float)foodPoints;
+-(instancetype)initWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate foodPoints:(float)foodPoints numDaysNotInSchool:(NSInteger)numDays;
 -(float)mainCalculations;
 @end
