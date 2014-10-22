@@ -62,10 +62,7 @@
     //NSDateComponents *difference2 = [calendar components:NSDayCalendarUnit
                                              //  fromDate:self.startDate toDate:self.endDate options:0];
     
-
-    #warning - if current date is after break, the break will still be counted (need to change)
     NSUInteger daysLeft = [difference day]  - self.numDaysNotInSchool;
-    
     return daysLeft;
 }
 

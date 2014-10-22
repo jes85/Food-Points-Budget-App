@@ -50,9 +50,15 @@
 {
     NSUInteger numDays = 0;
     NSDate *today = [NSDate date];
-    //change today to start of today
+    NSDate *startOfToday;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    //Inititialize startOfToday
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&startOfToday
+                 interval:NULL forDate:today];
+
     for(NSDate *day in self.daysNotInSchool){
-        if([today compare:day] <= 0){ //if today is a day off (=0), include today in numDaysNotInSchool
+        if([startOfToday compare:day] <= 0){ //if today is a day off (=0), include today in numDaysNotInSchool
             numDays++;
         }
     }

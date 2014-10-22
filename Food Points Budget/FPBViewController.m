@@ -14,13 +14,11 @@
 static const NSUInteger endMonthF14 = 12;
 static const NSUInteger endDayF14 = 14;
 static const NSUInteger endYearF14 = 2014;
-static const NSUInteger numDaysNotInSchoolF14 = 9;
 
 // Spring 2015
 static const NSUInteger endMonthS15 = 5;
 static const NSUInteger endDayS15 = 2;
 static const NSUInteger endYearS15 = 2015;
-static const NSUInteger numDaysNotInSchoolS15 =9;
 
 
 
@@ -46,9 +44,6 @@ static const NSUInteger numDaysNotInSchoolS15 =9;
     NSArray *daysMissingS15 = [self daysMissingS15];
     
     
-    
-  /*  FPBSemester *fall2014 = [[FPBSemester alloc]initWithName:@"fall2014" endMonth:endMonthF14 endDay:endDayF14 endYear:endYearF14 numDaysNotInSchool:numDaysNotInSchoolF14];
-    FPBSemester *spring2015 = [[FPBSemester alloc]initWithName:@"spring2015" endMonth:endMonthS15 endDay:endDayS15 endYear:endYearS15 numDaysNotInSchool:numDaysNotInSchoolS15];*/
     FPBSemester *fall2014 = [[FPBSemester alloc]initWithName:@"fall2014" endMonth:endMonthF14 endDay:endDayF14 endYear:endYearF14 daysNotInSchool:daysMissingF14];
     FPBSemester *spring2015 = [[FPBSemester alloc]initWithName:@"spring2015" endMonth:endMonthS15 endDay:endDayS15 endYear:endYearS15 daysNotInSchool:daysMissingS15];
     
@@ -58,6 +53,9 @@ static const NSUInteger numDaysNotInSchoolS15 =9;
     
 }
 
+/*
+ * Makes array for Fall Break and Thanksgiving Days
+ */
 -(NSArray *)daysMissingF14
 {
     NSMutableArray *daysMissingArray = [[NSMutableArray alloc]init];
@@ -90,6 +88,9 @@ static const NSUInteger numDaysNotInSchoolS15 =9;
     
     
 }
+/*
+ * Makes array for Spring Break days
+ */
 -(NSArray *)daysMissingS15
 {
     NSMutableArray *daysMissingArray = [[NSMutableArray alloc]init];
@@ -107,16 +108,10 @@ static const NSUInteger numDaysNotInSchoolS15 =9;
         [daysMissingArray addObject:dayMissing];
         
     }
-   
-    
     
     return daysMissingArray;
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 -(NSMutableArray *)semesters
 {
     if(!_semesters)_semesters = [[NSMutableArray alloc]init];

@@ -19,7 +19,6 @@
 @property (nonatomic) NSArray *daysNotInSchool;
 @property (nonatomic) NSUInteger numDaysNotInSchool;
 
--(instancetype)initWithName:(NSString *)name endMonth:(NSUInteger)endMonth endDay: (NSUInteger)endDay endYear:(NSUInteger)endYear numDaysNotInSchool:(NSUInteger)numDays;
 -(instancetype)initWithName:(NSString *)name endMonth:(NSUInteger)endMonth endDay: (NSUInteger)endDay endYear:(NSUInteger)endYear daysNotInSchool:(NSArray *)days;
 -(NSDate *)calculateEndDate;
 -(NSUInteger)calculateDaysNotInSchool;
